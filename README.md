@@ -1,1 +1,1 @@
-# picosoc_simple
+# PicoSoC simple
