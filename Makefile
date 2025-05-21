@@ -13,7 +13,12 @@ SDC := ${current_dir}/picosoc.sdc
 
 ifeq ($(TARGET), cycloneiv)
   SOURCES += ${current_dir}/top.v   
-  QSF := ${current_dir}/top.qsf   
+  QSF := ${current_dir}/top.qsf
+  QUARTUS := 1   
+else ifeq ($(TARGET), max10)
+  SOURCES += ${current_dir}/top.v   
+  QSF := ${current_dir}/top.qsf  
+  QUARTUS := 1
 else ifeq ($(TARGET),arty_35)
   SOURCES += ${current_dir}/arty.v
   PCF := ${current_dir}/arty.pcf
@@ -49,10 +54,10 @@ waveform:
 
 
 # ---------------------------------------------------
-# Flujo Quartus para Cyclone IV
+# Flujo Quartus para Cyclone IV y max10
 # ---------------------------------------------------
 
-ifeq ($(TARGET), cycloneiv)
+ifeq ($(QUARTUS), 1)
 
 QUARTUS_MAP := quartus_map
 QUARTUS_FIT := quartus_fit
