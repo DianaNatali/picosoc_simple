@@ -75,11 +75,11 @@ fit:
 asm:
 	$(QUARTUS_ASM) $(TOP)
 
-sof: asm
-	@echo "SOF generado en output_files/$(TOP).sof"
+pof: asm
+	@echo "pof generado en output_files/$(TOP).pof"
 
-program: sof
-	$(QUARTUS_PGM) -c USB-Blaster -m JTAG -o "p;output_files/$(TOP).sof"
+program: pof
+	$(QUARTUS_PGM) -c USB-Blaster -m JTAG -o "p;output_files/$(TOP).pof"
 
 clean_fw:
 	rm -f main.elf
@@ -95,7 +95,7 @@ clean_sim:
 clean_quartus:
 	rm -rf db incremental_db output_files
 
-.PHONY: map fit asm build sof program clean_fw clean_sim clean_quartus
+.PHONY: map fit asm build pof program clean_fw clean_sim clean_quartus
 
 else
 
